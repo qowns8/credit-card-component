@@ -7,6 +7,7 @@
   "scripts": {
     "component": "yarn workspace @react-component-boilerplate/component",
     "component:build": "yarn workspace @react-component-boilerplate/component build",
+    "component:watch": "yarn workspace @react-component-boilerplate/component watch",
     "component:test": "yarn workspace @react-component-boilerplate/component test",
     "component:coverage": "yarn workspace @react-compoent-boilerplate/component test:coverage",
     "example:run": "yarn workspace @react-component-boilerplate/example start",

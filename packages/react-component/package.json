@@ -11,6 +11,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",
+    "watch": "rollup -c -w",
     "test": "jest --watchAll false",
     "test:coverage": "jest --json --coverage",
     "lint": "eslint"

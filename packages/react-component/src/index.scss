@@ -1,3 +1,42 @@
-.lehkost-table-header--cell-popup {
-  color: red;
+.credit-card-wrapper {
+  border: 2px solid #555;
+  border-radius: 20px;
+  padding: 3em 2em;
+}
+
+.credit-card-front {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  height: 100%;
+  width: 100%;
+  input {
+    border: unset;
+    height: 2em;
+    width: inherit;
+    text-align: center;
+  }
+  .credit-card-number {
+    display: flex;
+    gap: 1em;
+    @for $i from 1 to 5 {
+      .card-number__#{$i} {
+        width: 100%;
+      }
+    }
+  }
+  .credit-card-expire {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    input {
+      width: 40px;
+    }
+  }
+  .credit-card-name {
+    display: flex;
+    gap: 20px;
+  }
 }

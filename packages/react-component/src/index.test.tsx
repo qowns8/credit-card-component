@@ -4,20 +4,6 @@ import Component from './index'
 
 test('renders learn react link', () => {
   render(
-    <Component
-      headers={[
-        {
-          key: 'head',
-          title: 'HEAD',
-        },
-      ]}
-      data={[
-        {
-          head: '111',
-        },
-      ]}
-    />,
+    <Component/>,
   )
-  screen.getByText('HEAD')
-  screen.getByText('111')
 })
