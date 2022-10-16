@@ -1,0 +1,96 @@
+{
+  "name": "@react-component-boilerplate/component",
+  "version": "1.0.0",
+  "description": "react-component-boilerplate",
+  "keywords": [
+    "custom-component-boilerplate"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "source": "src/index.tsx",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --watchAll false",
+    "test:coverage": "jest --json --coverage",
+    "lint": "eslint"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "repository": {},
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-script": "^2.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.6.2",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/terser-webpack-plugin": "^5.0.4",
+    "autoprefixer": "^10.4.8",
+    "babel-jest": "^29.0.3",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "eslint": "^8.21.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^29.0.3",
+    "jest-scss-transform": "^1.0.3",
+    "node-sass": "^7.0.1",
+    "postcss-import": "^14.1.0",
+    "prettier": "^2.7.1",
+    "rollup": "^2.78.0",
+    "rollup-plugin-import-css": "^3.0.3",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sass": "^1.2.13",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "ts-jest": "^28.0.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "rootDir": "./src",
+    "transform": {
+      ".(ts|tsx)": "ts-jest",
+      "^.+\\.scss$": "jest-scss-transform"
+    },
+    "collectCoverageFrom": [
+      "/**/*.{js,jsx,ts,tsx}"
+    ],
+    "coverageReporters": [
+      "json",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "statements": 10
+      }
+    }
+  }
+}

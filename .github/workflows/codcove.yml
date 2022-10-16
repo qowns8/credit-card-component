@@ -1,0 +1,42 @@
+name: Running Code Coverage
+# if you do not setting codecov and secrets key it will be failure
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  codecov:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: ['16']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: dependency
+      - run: |
+          yarn set version berry
+          yarn workspace @react-component-boilerplate/component install
+
+      - name: coverage
+      - run: yarn test:component:coverage
+
+      - name: Codecov upload
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
