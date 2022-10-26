@@ -8,6 +8,17 @@ export default {
   component: Sample,
 } as ComponentMeta<typeof Sample>;
 
-const Template: ComponentStory<typeof Sample> = (args) => <Sample {...args} />;
+const Template: ComponentStory<typeof Sample> = (args) => <Sample
+  colorSetting={{
+    font: '#bbb'
+  }}
+  backgroundSet={{
+    front: {
+      x1: 'https://www.sciencenews.org/wp-content/uploads/2022/10/100622_lg_glob-cluster_feat-1030x580.jpg 1030w'
+    }
+  }}
+  {
+  ...args
+} />;
 
 export const abc = Template.bind({})

@@ -1,42 +1,78 @@
 .credit-card-wrapper {
   border: 2px solid #555;
   border-radius: 20px;
-  padding: 3em 2em;
+  height: 100%;
+  width: 100%;
 }
 
 .credit-card-front {
   display: flex;
   flex-direction: column;
   gap: 2em;
-  height: 100%;
-  width: 100%;
-  input {
-    border: unset;
-    height: 2em;
-    width: inherit;
-    text-align: center;
+  position: relative;
+  .credit-card-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
-  .credit-card-number {
-    display: flex;
-    gap: 1em;
-    @for $i from 1 to 5 {
-      .card-number__#{$i} {
-        width: 100%;
+  .credit-card-information {
+    z-index: 1;
+    padding: 3em 2em;
+    height: 100%;
+    input {
+      border: unset;
+      height: 2em;
+      width: inherit;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1;
+      input.invalid {
+        border: 2px solid red;
+      }
+      &.valid {
+        :after {
+          content:  "✓";
+          colors: green;
+        }
       }
     }
-  }
-  .credit-card-expire {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-    input {
-      width: 40px;
+    .credit-card-number {
+      display: flex;
+      gap: 1em;
+      @for $i from 1 to 5 {
+        .card-number__#{$i} {
+          width: 100%;
+        }
+      }
+    }
+    .credit-card-expire {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
+      input {
+        width: 40px;
+      }
+    }
+    .credit-card-name {
+      display: flex;
+      gap: 20px;
     }
   }
-  .credit-card-name {
-    display: flex;
-    gap: 20px;
+}
+.credit-card-back {
+  &:not(.visible) {
+    display: none;
   }
 }
