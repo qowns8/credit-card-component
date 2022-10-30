@@ -3,6 +3,22 @@
   border-radius: 20px;
   height: 100%;
   width: 100%;
+  &.front {
+    .credit-card-front {
+      display: flex;
+    }
+    .credit-card-back {
+      display: none;
+    }
+  }
+  &.back {
+    .credit-card-front {
+      display: none;
+    }
+    .credit-card-back {
+      display: flex;
+    }
+  }
 }
 
 .credit-card-front {
@@ -72,7 +88,4 @@
   }
 }
 .credit-card-back {
-  &:not(.visible) {
-    display: none;
-  }
 }

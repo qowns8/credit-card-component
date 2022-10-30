@@ -1,4 +1,4 @@
-import React, {CSSProperties, ReactNode, useState} from 'react'
+import React, {CSSProperties, ReactNode, useMemo, useState} from 'react'
 import './index.scss'
 
 interface IColorSetting {
@@ -56,18 +56,24 @@ export default function Component(props: ICreditCardProps) {
     ...prev,
     [key]: newValue
   }))
+  const getSrc = (src: TBackground, hasNext = true) => {
+    if (typeof src === 'string') {
+      return `${src}${hasNext ? '' : '\n,'}`
+    }
+    return ''
+  }
   const { front } = props.backgroundSet
   return (
     <div style={{
       color: props.colorSetting.font,
-    }} className="credit-card-wrapper">
+    }} className={`credit-card-wrapper ${status}`}>
       <div className="credit-card-front">
         <div className="credit-card-background">
           {
             typeof front.x1 === "string"
               ? <img
-                  srcSet={`${front.x1}`}
-                  sizes="(max-width: 1030px) 1030px"
+                  srcSet={`${getSrc(front.x1)}${getSrc(front.x2)}${getSrc(front.x3)}`}
+                  sizes="(max-width: 1030px) 1030px, (max-width: 1630px) 1630px, (max-width: 1830px) 1830px"
               /> : (front.x3 || front.x2 || front.x1)
           }
         </div>
@@ -133,7 +139,7 @@ export default function Component(props: ICreditCardProps) {
           </div>
         </div>
       </div>
-      <div className={`credit-card-back ${status === 'back' ? 'visible' : ''}`}>
+      <div className="credit-card-back">
         <div className="credit-card__magnetic-stripe"></div>
         <div className="credit-card__cvs-area">
           <div className="credit-card__cvs-area__text">
