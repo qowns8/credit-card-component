@@ -14,6 +14,7 @@ interface IResponsiveBackgroundSet {
   x1: TBackground
   x2?: TBackground
   x3?: TBackground
+  sizes?: string
 }
 
 interface ICreditCardProps {
@@ -58,7 +59,7 @@ export default function Component(props: ICreditCardProps) {
   }))
   const getSrc = (src: TBackground, hasNext = true) => {
     if (typeof src === 'string') {
-      return `${src}${hasNext ? '' : '\n,'}`
+      return `${src}${hasNext ? '' : ','}`
     }
     return ''
   }
@@ -73,7 +74,7 @@ export default function Component(props: ICreditCardProps) {
             typeof front.x1 === "string"
               ? <img
                   srcSet={`${getSrc(front.x1)}${getSrc(front.x2)}${getSrc(front.x3)}`}
-                  sizes="(max-width: 1030px) 1030px, (max-width: 1630px) 1630px, (max-width: 1830px) 1830px"
+                  sizes={front.sizes || ''}
               /> : (front.x3 || front.x2 || front.x1)
           }
         </div>
