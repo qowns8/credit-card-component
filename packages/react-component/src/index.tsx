@@ -59,7 +59,7 @@ export default function Component(props: ICreditCardProps) {
   }))
   const getSrc = (src: TBackground, hasNext = true) => {
     if (typeof src === 'string') {
-      return `${src}${hasNext ? '' : ','}`
+      return `${src}${hasNext ? ',\n ' : ''}`
     }
     return ''
   }
@@ -73,7 +73,7 @@ export default function Component(props: ICreditCardProps) {
           {
             typeof front.x1 === "string"
               ? <img
-                  srcSet={`${getSrc(front.x1)}${getSrc(front.x2)}${getSrc(front.x3)}`}
+                  srcSet={`${getSrc(front.x1, front.x2 !== undefined)}${getSrc(front.x2, front.x3  !== undefined)}${getSrc(front.x3, false)}`}
                   sizes={front.sizes || ''}
               /> : (front.x3 || front.x2 || front.x1)
           }
