@@ -8,29 +8,39 @@ export default {
   component: Sample,
 } as ComponentMeta<typeof Sample>;
 
-const Template1: ComponentStory<typeof Sample> = (args) => <Sample
-  colorSetting={{
-    font: '#bbb'
-  }}
-  backgroundSet={{
-    front: {
-      x1: 'https://media2.giphy.com/media/3YKEA2gTCbZMoMWbKk/giphy.gif?cid=ecf05e47i4yzazwb16525v8vh2pzjt6fh02z8sllky9nc6kh&rid=giphy.gif&ct=g 1030w',
-      x2: 'https://media0.giphy.com/media/3ohzAN9PzGgxpQaiM8/giphy.gif?cid=ecf05e47nio07ieflmuggzj8sb0nagr48zuqi4qa5a54zham&rid=giphy.gif&ct=g 2000w',
-      size: '(max-width: 1030px) 1030px, (max-width: 2000px) 2000px'
-    }
-  }}
-  {
-  ...args
-} />;
+const Template1: ComponentStory<typeof Sample> = (args) => <div style={{ width: '856px', height: '539px', fontSize: '28px'}}>
+  <Sample
+    colorSetting={{
+      font: 'white'
+    }}
+    backgroundSet={{
+      front: {
+        x1: 'https://images4.alphacoders.com/116/1164518.jpg 1030w',
+        x2: 'https://images4.alphacoders.com/116/1164518.jpg 2000w',
+        size: '(max-width: 1030px) 1030px, (max-width: 2000px) 2000px'
+      },
+      back: {
+        x1: 'https://images2.alphacoders.com/120/1209113.jpg 1030w',
+        x2: 'https://images2.alphacoders.com/120/1209113.jpg 2000w',
+        size: '(max-width: 1030px) 1030px, (max-width: 2000px) 2000px'
+      }
+    }}
+    {
+      ...args
+    } />
+</div>
 
 export const ImageBackground = Template1.bind({})
 
 const Template2: ComponentStory<typeof Sample> = (args) => <Sample
   colorSetting={{
-    font: '#fff'
+    font: '#bbb'
   }}
   backgroundSet={{
     front: {
+      x1: <div style={{ width: '100%', height: '100%', background: '#1d1e22'}} />
+    },
+    back: {
       x1: <div style={{ width: '100%', height: '100%', background: '#1d1e22'}} />
     }
   }}

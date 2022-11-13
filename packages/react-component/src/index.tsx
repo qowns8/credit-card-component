@@ -63,7 +63,7 @@ export default function Component(props: ICreditCardProps) {
     }
     return ''
   }
-  const { front } = props.backgroundSet
+  const { front, back } = props.backgroundSet
   return (
     <div style={{
       color: props.colorSetting.font,
@@ -138,17 +138,36 @@ export default function Component(props: ICreditCardProps) {
                 onChange={e => evolveData('givenName', e.target.value)}/>
             </div>
           </div>
+          <div>
+            <button onClick={() => setStatus('back')}>to back</button>
+          </div>
         </div>
       </div>
       <div className="credit-card-back">
-        <div className="credit-card__magnetic-stripe"></div>
-        <div className="credit-card__cvs-area">
-          <div className="credit-card__cvs-area__text">
-            <CardInput
-              colorSetting={props.colorSetting}
-              value={data.cvs}
-              onChange={e => evolveData('cvs', e.target.value)}
-            />
+        <div className="credit-card-background">
+          {
+            typeof back.x1 === "string"
+              ? <img
+                srcSet={`${getSrc(back.x1, back.x2 !== undefined)}${getSrc(back.x2, back.x3  !== undefined)}${getSrc(back.x3, false)}`}
+                sizes={back.sizes || ''}
+              /> : (back.x3 || back.x2 || back.x1)
+          }
+        </div>
+        <div className="credit-card-information">
+          <div className="credit-card__magnetic-stripe"></div>
+          <div className="empty-row"></div>
+          <div className="credit-card__cvs-area">
+            <div className="credit-card__cvs-area__text">
+              <div>CVS</div>
+              <CardInput
+                colorSetting={props.colorSetting}
+                value={data.cvs}
+                onChange={e => evolveData('cvs', e.target.value)}
+              />
+            </div>
+          </div>
+          <div>
+            <button onClick={() => setStatus('front')}>to front</button>
           </div>
         </div>
       </div>

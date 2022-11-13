@@ -1,56 +1,74 @@
 .credit-card-wrapper {
-  border: 2px solid #555;
-  border-radius: 20px;
   height: 100%;
   width: 100%;
+  backface-visibility: hidden;
+  position: relative;
+  .credit-card-front, .credit-card-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 2px solid #555;
+    border-radius: 20px;
+    //transform: perspective(100px) rotateY(0deg) rotateX(0deg) rotate(0deg);
+    //transform-style: preserve-3d;
+    transition: all 1s
+  }
   &.front {
-    .credit-card-front {
-      display: flex;
-    }
     .credit-card-back {
-      display: none;
+      transform: perspective(1000px) rotateY(-180deg) rotateX(0deg) rotate(0deg);
+      z-index: -1;
+    }
+    .credit-card-front {
+      transform: perspective(1000px) rotateY(0);
+      z-index: 2;
     }
   }
   &.back {
-    .credit-card-front {
-      display: none;
-    }
     .credit-card-back {
-      display: flex;
+      transform: perspective(1000px) rotateY(0);
+      z-index: 2;
+    }
+    .credit-card-front {
+      transform: perspective(1000px) rotateY(180deg) rotateX(0deg) rotate(0deg);
+      z-index: -1;
     }
   }
 }
 
-.credit-card-front {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  position: relative;
-  .credit-card-background {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 0;
+.credit-card-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  z-index: -1;
+  & > img {
     width: 100%;
     height: 100%;
-    border-radius: 18px;
-    overflow: hidden;
-    & > img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    object-fit: cover;
   }
+}
+
+.credit-card-front, .credit-card-back {
+  height: 100%;
   .credit-card-information {
-    z-index: 1;
-    padding: 3em 2em;
     height: 100%;
+    padding: 3em 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    & > div, button {
+      height: 2em;
+    }
     input {
       border: unset;
-      height: 2em;
+      height: 100%;
       width: inherit;
       text-align: center;
       background: rgba(255, 255, 255, 0.1);
+      font-size: 1.2em;
       z-index: 1;
       input.invalid {
         border: 2px solid red;
@@ -85,7 +103,19 @@
       display: flex;
       gap: 20px;
     }
+    .credit-card__magnetic-stripe {
+      width: 100%;
+      background: white;
+    }
   }
 }
 .credit-card-back {
+  width: 100%;
+  transform: perspective(100px)  rotateY(180deg);
+  .credit-card__cvs-area__text {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+  }
 }
